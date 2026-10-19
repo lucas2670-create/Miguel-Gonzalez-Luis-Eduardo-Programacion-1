@@ -1,0 +1,67 @@
+##Nombre: Luis Eduardo Miguel Gonzalez##
+##Recibo de compra interactivo##
+
+
+
+
+
+# 1. Captura de datos #
+numero_productos = 2
+
+print("¿Cuántos productos vas a registrar? 2")
+
+productos = []
+subtotal_general = 0
+
+# 2. Registro de los productos #
+for i in range(numero_productos):
+
+    if i == 0:
+        nombre_producto = "Cuaderno"
+        precio_producto = 35.00
+        cantidad_producto = 2
+    else:
+        nombre_producto = "Pluma"
+        precio_producto = 12.50
+        cantidad_producto = 3
+
+    print(f"\nProducto {i + 1}")
+    print(f"Nombre del producto: {nombre_producto}")
+    print(f"Precio del producto: ${precio_producto:g}")
+    print(f"Cantidad: {cantidad_producto}")
+
+    ##3. Cálculo del subtotal de cada producto##
+    subtotal_producto = precio_producto * cantidad_producto
+
+    productos.append({
+        "nombre": nombre_producto,
+        "precio": precio_producto,
+        "cantidad": cantidad_producto,
+        "subtotal": subtotal_producto
+    })
+
+    subtotal_general += subtotal_producto
+
+##4. Cálculo del IVA y el total##
+iva = subtotal_general * 0.16
+total_pagar = subtotal_general + iva
+
+# 5. Impresión del recibo final
+print("\n" + "=" * 45)
+print("           RECIBO DE COMPRA")
+print("=" * 45)
+
+for producto in productos:
+    print(f"\nProducto: {producto['nombre']}")
+    print(f"Precio:   ${producto['precio']:.2f}")
+    print(f"Cantidad: {producto['cantidad']}")
+    print(f"Subtotal: ${producto['subtotal']:.2f}")
+
+print("\n" + "-" * 45)
+print(f"Subtotal general: ${subtotal_general:.2f}")
+print(f"IVA (16%):        ${iva:.2f}")
+print("-" * 45)
+print(f"TOTAL A PAGAR:    ${total_pagar:.2f}")
+print("=" * 45)
+print("       ¡Gracias por tu compra!")
+print("=" * 45)
